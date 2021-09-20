@@ -1,0 +1,11 @@
+--- _deps/poppler-src/CMakeLists.txt	2021-09-20 13:13:51.987957069 +0300
++++ ../popplercmakelists.txt	2021-09-20 13:13:22.095922443 +0300
+@@ -2,7 +2,7 @@
+ 
+ project(poppler)
+ 
+-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
++set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
+ 
+ include(PopplerDefaults)
+ include(PopplerMacros)

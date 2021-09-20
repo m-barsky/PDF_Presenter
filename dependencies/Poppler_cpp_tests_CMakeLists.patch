@@ -1,0 +1,13 @@
+--- _deps/poppler-src/cpp/tests/CMakeLists.txt	2021-09-20 13:14:19.223989667 +0300
++++ ../poppler_cpp_testcmakelists.txt	2021-09-20 13:15:44.120097169 +0300
+@@ -17,8 +17,8 @@
+   endif()
+ endmacro(CPP_ADD_SIMPLETEST)
+ 
+-cpp_add_simpletest(poppler-dump poppler-dump.cpp ${CMAKE_SOURCE_DIR}/utils/parseargs.cc)
+-cpp_add_simpletest(poppler-render poppler-render.cpp ${CMAKE_SOURCE_DIR}/utils/parseargs.cc)
++cpp_add_simpletest(poppler-dump poppler-dump.cpp ${PROJECT_SOURCE_DIR}/utils/parseargs.cc)
++cpp_add_simpletest(poppler-render poppler-render.cpp ${PROJECT_SOURCE_DIR}/utils/parseargs.cc)
+ 
+ if(ENABLE_FUZZER)
+   cpp_add_simpletest(doc_fuzzer ./fuzzing/doc_fuzzer.cc)
