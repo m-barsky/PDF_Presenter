@@ -4,7 +4,7 @@
 
 #include <wx/wx.h>
 
-#include "MainFrame.h"
+#include "EditorController.h"
 
 class App : public wxApp {
 public:
@@ -13,6 +13,6 @@ public:
     virtual bool OnInit() override;
 
 private:
-    MainFrame* m_main_frame;
+    std::unique_ptr<EditorController> m_editor_controller;
 };
 

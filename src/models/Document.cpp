@@ -32,3 +32,12 @@ std::filesystem::path Document::path() const {
     return m_pdf_path;
 }
 
+bool Document::is_open() const {
+    assert(m_pdf_file.is_open() == m_notes_file.is_open());
+    return m_pdf_file.is_open() && m_notes_file.is_open();
+}
+
+Document::operator bool() const {
+    return is_open();
+}
+

@@ -4,7 +4,7 @@
 
 wxIMPLEMENT_APP(App);
 
-App::App() : m_main_frame() {
+App::App() : m_editor_controller() {
 
 }
 
@@ -13,10 +13,9 @@ bool App::OnInit() {
         return false;
     }
 
-    m_main_frame = new MainFrame();
-    m_main_frame->Show(true);
+    m_editor_controller = std::make_unique<EditorController>();
 
-    m_main_frame->ChoosePdfFile();
+    m_editor_controller->start();
 
     return true;
 }

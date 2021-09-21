@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <fstream>
+#include <cassert>
 
 class Document {
 public:
@@ -19,6 +20,9 @@ public:
 
     std::filesystem::path name() const;
     std::filesystem::path path() const;
+
+    bool is_open() const; 
+    explicit operator bool() const;
 
 private:
     std::filesystem::path m_pdf_path;
