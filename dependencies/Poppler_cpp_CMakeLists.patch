@@ -1,8 +1,0 @@
---- _deps/poppler-src/cpp/CMakeLists.txt	2021-09-20 13:25:05.982827451 +0300
-+++ ../poppler_cppcmakelists.txt	2021-09-20 13:43:29.591361591 +0300
-@@ -51,4 +51,5 @@
-   ${CMAKE_CURRENT_BINARY_DIR}/poppler_cpp_export.h
-   ${CMAKE_CURRENT_BINARY_DIR}/poppler-version.h
-   DESTINATION include/poppler/cpp)
-+message("INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
- 

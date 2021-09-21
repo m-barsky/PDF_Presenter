@@ -1,9 +1,32 @@
-add_executable(app main.cpp)
-target_link_libraries(app PRIVATE poppler)
+cmake_policy(SET CMP0076 NEW)
 
-get_property(dirs1 TARGET app PROPERTY INCLUDE_DIRECTORIES)
-get_property(dirs2 TARGET app PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-foreach(dir ${dirs2})
-  message(STATUS "Interface include directory for my_target: ${dir}")
-endforeach()
+add_executable(app)
+
+target_include_directories(app PRIVATE views models)
+
+add_subdirectory(models)
+add_subdirectory(views)
+add_subdirectory(controllers)
+
+target_sources(app PRIVATE
+    App.cpp
+    App.h
+)
+
+target_compile_options(app PUBLIC "-Wall" "-Wpedantic" "-Wextra")
+target_compile_options(app PUBLIC "$<$<CONFIG:DEBUG>:-O0;-g3;-fsanitize=leak>")
+target_link_options(app PUBLIC "$<$<CONFIG:DEBUG>:-fsanitize=leak>")
+
+set_target_properties(app PROPERTIES
+    CXX_STANDARD 17
+    CXX_EXTENSIONS OFF
+)
+
+find_package(Poppler REQUIRED)
+target_link_libraries(app PUBLIC poppler)
+
+find_package(wxWidgets REQUIRED)
+include(${wxWidgets_USE_FILE})
+set(wxWidgets_USE_STATIC ON)
+target_link_libraries(app PUBLIC ${wxWidgets_LIBRARIES})
 
