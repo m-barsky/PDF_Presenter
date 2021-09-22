@@ -13,7 +13,7 @@ bool App::OnInit() {
         return false;
     }
 
-    m_editor_controller = std::make_unique<EditorController>();
+    m_editor_controller = std::make_unique<editor_controller>();
 
     m_editor_controller->start();
 

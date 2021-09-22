@@ -1,5 +1,5 @@
 target_sources(app PRIVATE
-    EditorController.cpp
-    EditorController.h
+    editor_controller.cpp
+    editor_controller.h
 )
 

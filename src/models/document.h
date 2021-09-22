@@ -4,19 +4,19 @@
 #include <fstream>
 #include <cassert>
 
-class Document {
+class document {
 public:
-    Document();
-    Document(const std::filesystem::path& pdf_path);
-    Document(const std::filesystem::path& pdf_path, const std::filesystem::path& notes_path);
+    document();
+    document(const std::filesystem::path& pdf_path);
+    document(const std::filesystem::path& pdf_path, const std::filesystem::path& notes_path);
 
-    Document(const Document&) = delete;
-    Document(Document&&) = default;
+    document(const document&) = delete;
+    document(document&&) = default;
 
-    Document& operator=(const Document&) = delete;
-    Document& operator=(Document&&) = default;
+    document& operator=(const document&) = delete;
+    document& operator=(document&&) = default;
 
-    ~Document() = default;
+    ~document() = default;
 
     std::filesystem::path name() const;
     std::filesystem::path path() const;
