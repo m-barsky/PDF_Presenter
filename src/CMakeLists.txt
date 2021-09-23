@@ -2,11 +2,12 @@ cmake_policy(SET CMP0076 NEW)
 
 add_executable(app)
 
-target_include_directories(app PRIVATE views models controllers)
+target_include_directories(app PRIVATE views models controllers utils)
 
 add_subdirectory(models)
 add_subdirectory(views)
 add_subdirectory(controllers)
+add_subdirectory(utils)
 
 target_sources(app PRIVATE
     App.cpp

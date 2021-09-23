@@ -2,9 +2,10 @@
 
 #include <utility>
 
+#include <wx/sizer.h>
 #include <wx/filedlg.h>
 
-MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "PDF Presenter") {
+MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "PDF Presenter"), m_image_panel() {
     auto file_menu = new wxMenu();
     // TODO: add open, save, save as, close
     file_menu->Append(wxID_OPEN, "&Open\tCTRL+O", "Open a new PDF document");
@@ -23,19 +24,15 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "PDF Presenter") {
     CreateStatusBar();
     SetStatusText("No file open");
 
-    Bind(wxEVT_MENU, &MainFrame::OnOpenButton, this, wxID_OPEN);
-    Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
-    Bind(wxEVT_MENU, &MainFrame::OnExit, this, wxID_EXIT);
+    m_image_panel = new wxResizableImagePanel(this, 400, 400);
+
+    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+    sizer->Add(m_image_panel, 1, wxEXPAND, 0);
+
+    SetSizer(sizer);
 }
 
-void MainFrame::OnAbout([[maybe_unused]] wxCommandEvent& event) {
-    wxMessageBox("PDF Presenter: version 0.0.1", "PDF Presenter", wxOK | wxICON_INFORMATION);
-}
-
-void MainFrame::OnExit([[maybe_unused]] wxCommandEvent& event) {
-    Close(true);
-}
-
-void MainFrame::OnOpenButton([[maybe_unused]] wxCommandEvent& event) {
+void MainFrame::SetImage(wxImage image) {
+    m_image_panel->SetImage(std::move(image));
 }
 

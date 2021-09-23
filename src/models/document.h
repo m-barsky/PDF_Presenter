@@ -2,7 +2,10 @@
 
 #include <filesystem>
 #include <fstream>
-#include <cassert>
+
+#include "poppler/cpp/poppler-document.h"
+
+#include "undeleted_ptr.h"
 
 class document {
 public:
@@ -24,11 +27,19 @@ public:
     bool is_open() const; 
     explicit operator bool() const;
 
+    bool dirty() const;
+    void flush();
+
+    int page_count() const;
+
 private:
     std::filesystem::path m_pdf_path;
     std::ifstream m_pdf_file;
+    undeleted_ptr<poppler::document> m_pdf_document;
 
     std::filesystem::path m_notes_path;
     std::ifstream m_notes_file;
+
+    bool m_dirty;
 };
 

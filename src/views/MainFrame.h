@@ -2,14 +2,16 @@
 
 #include <wx/wx.h>
 
+#include "wxResizableImagePanel.h"
+
 class MainFrame : public wxFrame {
 public:
     MainFrame();
-    virtual~MainFrame() = default;
+    virtual ~MainFrame() = default;
+
+    void SetImage(wxImage image);
 
 private:
-    void OnAbout(wxCommandEvent& event);
-    void OnExit(wxCommandEvent& event);
-    void OnOpenButton(wxCommandEvent& event);
+    wxResizableImagePanel* m_image_panel;
 };
 
