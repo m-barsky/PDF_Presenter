@@ -23,10 +23,10 @@ set_target_properties(app PROPERTIES
     CXX_EXTENSIONS OFF
 )
 
-find_package(Poppler REQUIRED)
-target_link_libraries(app PUBLIC poppler)
+# find_package(Poppler REQUIRED)
+# target_link_libraries(app PUBLIC poppler)
 
-find_package(wxWidgets REQUIRED)
+find_package(wxWidgets COMPONENTS core base adv richtext REQUIRED)
 include(${wxWidgets_USE_FILE})
 set(wxWidgets_USE_STATIC ON)
 target_link_libraries(app PUBLIC ${wxWidgets_LIBRARIES})

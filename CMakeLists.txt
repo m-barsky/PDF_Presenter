@@ -5,6 +5,7 @@ project(pdf_presenter)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 add_subdirectory(src)
+add_subdirectory(lib)
 
 option(USE_LLD ON)
 
